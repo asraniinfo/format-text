@@ -23,11 +23,10 @@ public class TextUtil {
         String[] textArray = text.split(" ");
         List<String> result = new ArrayList<>();
         result.add("");
-        Arrays.stream(textArray).iterator().forEachRemaining(part -> {
+        Arrays.stream(textArray).forEach(part -> {
             if (part.length() >= maxLength) {
                 Arrays.stream(part.split(String.format(REGEX_SPLIT_BY_LENGTH,maxLength)))
-                        .iterator()
-                        .forEachRemaining(result::add);
+                        .forEach(result::add);
             } else if (maxLength > (result.get(result.size() - 1).length() + part.length() + 1)) {
                 StringBuilder stringBuilder = new StringBuilder(result.get(result.size() - 1));
                 // check if last element is empty no need to add space
